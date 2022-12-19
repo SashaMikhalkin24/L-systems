@@ -1,3 +1,13 @@
+def get_data(n):
+    with open('fractals.txt', 'r') as file:
+
+        lines = list(map(str.rstrip, file.readlines()))
+        axiom = lines[4 * n]
+        rules = dict(zip(lines[4 * n + 1].split(), lines[4 * n + 2].split()))
+        nums = list(map(int, lines[4 * n + 3].split()))
+        return axiom, rules, nums
+
+
 from turtle import *
 
 """Настроим окно рисования. Выставим большие размеры окна и зададим свои систему координат."""
@@ -8,14 +18,14 @@ bgcolor("#faebd7")
 shape('turtle')
 delay()
 speed(0)
-tracer(100)
+tracer(10000)
 
 n = int(input())
-axiom = 'F'
-rules = {'+': '+', '-': '-', 'F': 'F+F-F-F+F'}
+m = int(input())
+axiom, rules, nums = get_data(n)
 L = axiom
 L_dop = ''
-for i in range(n):
+for i in range(m):
     for j in L:
         L_dop += rules[j]
     L = L_dop
@@ -25,11 +35,11 @@ print(L)
 pensize(1)
 for i in L:
     if i == '+':
-        right(90)
+        right(nums[0])
     elif i == '-':
-        left(90)
-    else:
-        forward(2)
+        left(nums[1])
+    elif i == 'F':
+        forward(nums[2]*3**(3-m))
 update()
 
 

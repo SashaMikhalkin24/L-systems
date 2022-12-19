@@ -1,11 +1,12 @@
 def get_data(n):
     with open('fractals.txt', 'r') as file:
-
+        L = 5
         lines = list(map(str.rstrip, file.readlines()))
-        axiom = lines[4 * n]
-        rules = dict(zip(lines[4 * n + 1].split(), lines[4 * n + 2].split()))
-        nums = list(map(int, lines[4 * n + 3].split()))
-        return axiom, rules, nums
+        axiom = lines[L * n]
+        rules = dict(zip(lines[L * n + 1].split(), lines[L * n + 2].split()))
+        nums = list(map(int, lines[L * n + 3].split()))
+        params = list(map(int, lines[L * n + 4].split()))
+        return axiom, rules, nums, params
 
 
 from turtle import *
@@ -22,7 +23,7 @@ tracer(10000)
 
 n = int(input())
 m = int(input())
-axiom, rules, nums = get_data(n)
+axiom, rules, nums, params = get_data(n)
 L = axiom
 L_dop = ''
 for i in range(m):
@@ -33,13 +34,26 @@ for i in range(m):
 print(L)
 
 pensize(1)
+stack = []
 for i in L:
     if i == '+':
         right(nums[0])
     elif i == '-':
         left(nums[1])
     elif i == 'F':
-        forward(nums[2]*3**(3-m))
+        forward(nums[2]*params[0]**(3-m))
+    elif i == 'f':
+        forward(nums[3]*params[0]**(3-m))
+    elif i == '[':
+        stack.append((xcor(), ycor(), heading()))
+    elif i == ']':
+        penup()
+        x, y, ang = stack[-1]
+        stack.pop()
+        setheading(ang)
+        setx(x)
+        sety(y)
+        pendown()
 update()
 
 

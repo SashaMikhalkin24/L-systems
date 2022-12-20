@@ -1,10 +1,66 @@
-F
+F+F+F+F
 + - F
 + - F+F-F-F+F
-90 90 10
+90 90 600
 3
+F+F+F+F
++ - F f
++ - F+F-f-F+F fff
+90 90 600
+3
+FSFSFSF
+S s F
+S s FSFsFsFSF F
+600
+3
+F
+F f
+FfF fff
+600
+3
+F
++ - F f
++ - f-F-f F+f+F
+60 600
+2
+C
++ - P p C
++ - PP pp CPC--p+P+C++p-P-
+90 600
+2
+C
++ - P C
++ - PPP CPCPC-P+C-P+C--P--C--P--C+P-C+P-
+90 600
+3
+FX
+F + - X Y
+F + - X+YF+ -FX-Y
+90 600
+1.4114
 f
-+ - F f [ ]
-+ - FF F[-f]+f [ ]
-45 45 10 10 0 0
++ - F f [ ] 2
++ - 2F F[-f]+f [ ] 2
+40 600
+1
+22222222222f
++ - F f [ ] 2
++ - 2F F[-f]+f [ ] 2
+20 40 800
+1
+22222222222f
++ - F f [ ] 2
++ - 2F F[-f]+f [ ] 2
+20 40 800
+1
+
+
+
+
+
+
+f
++ - F f [ ] 2
++ - 2F F[-f]+f [ ] 2
+10 10 15 15 0 0
 1
